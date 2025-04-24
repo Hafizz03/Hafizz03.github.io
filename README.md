@@ -1,7 +1,7 @@
 # Hafizz03.github.io
 
 ## Biography
-Hello! My name is Hafizz. I am a web developer with a passion for creating beautiful and functional websites. I have experience in HTML, CSS, JavaScript, and various web development frameworks. I enjoy learning new technologies and improving my skills.
+I am a recent graduate with a Diploma in Computer Technology (System) from Advanced Technology Training Centre (ADTEC) Taiping. Eager to apply my academic knowledge and skills in a professional setting, I am seeking an entry-level position in IT to contribute to organizational success and achieve personal growth.
 
 ## Skills
 - HTML
@@ -11,8 +11,9 @@ Hello! My name is Hafizz. I am a web developer with a passion for creating beaut
 - Node.js
 - Express
 - MongoDB
+- Visual Programming
 
 ## Contact Information
-- Email: hafizz@example.com
+- Email: hafizramli698@gmail.com
 - LinkedIn: [Hafizz's LinkedIn](https://www.linkedin.com/in/hafizz)
 - GitHub: [Hafizz's GitHub](https://github.com/Hafizz03)
