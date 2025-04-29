@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Website</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         * {
             margin: 0;
@@ -501,6 +503,7 @@
                     <label class="form-label" for="reason">Reason for Access</label>
                     <textarea id="reason" class="form-input form-textarea" required></textarea>
                 </div>
+                 <div class="g-recaptcha" data-sitekey="6Le94CcrAAAAAECQpbfaiAhpXHHUC4I6POWIS4g7"></div>
                 <button type="submit" class="submit-button">
                     Submit Request
                     <span class="loading-spinner" id="spinner"></span>
@@ -529,6 +532,30 @@
     </div>
 
     <script>
+        function sendToGoogleSheet(formData) {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxTac6J5f3W3k9ouW_5WYX3czgFULBklm77WY2P_lYBJRxtTuo9pEWXKQWR4DqRDqjP/exec';
+
+    fetch(scriptURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+    })
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then((data) => {
+        console.log('Successfully saved to Google Sheets:', data);
+    })
+    .catch((error) => {
+        console.error('Error saving to Google Sheets:', error);
+    });
+}
+
         // Create animated particles
         function createParticles() {
             const count = 25;
@@ -652,18 +679,57 @@
             }
         });
         
-        // Form submission
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            spinner.style.display = 'inline-block';
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                reason: document.getElementById('reason').value
-            };
-            
+       form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent default form submission
+    spinner.style.display = 'inline-block'; // Show loading spinner
+           // Get the reCAPTCHA token
+    const recaptchaResponse = grecaptcha.getResponse();
+    if (!recaptchaResponse) {
+        spinner.style.display = 'none';
+        errorMessage.style.display = 'block';
+        errorMessage.textContent = 'Please complete the reCAPTCHA.';
+        return;
+    }
+           
+emailjs.init('T-Aep0elLRtwv_keT'); // Replace 'YOUR_USER_ID' with your EmailJS user ID
+    // Get form data
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        reason: document.getElementById('reason').value,
+        recaptchaToken: recaptchaResponse,
+    };
+            // Send form data to your backend
+    fetch('https://script.google.com/macros/s/AKfycbxb0RFcLm2yOtfkXGe0b98MjJtiMw4709ei5Zw9t9b1-GXbBhh1yWx9A_-FeB-sVOsaEA/exec', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.success) {
+                spinner.style.display = 'none';
+                successMessage.style.display = 'block';
+            } else {
+                throw new Error(data.message || 'Verification failed');
+
+    // Send form data using EmailJS
+    emailjs.send('service_61e7vz9', 'service_61e7vz9', formData)
+        .then(() => {
+            spinner.style.display = 'none';
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+        })
+        .catch((error) => {
+            spinner.style.display = 'none';
+            errorMessage.style.display = 'block';
+            console.error('EmailJS Error:', error);
+           
+        });
+            sendToGoogleSheet(formData); // Save the request in Google Sheets
+});
             // Save request to local storage
             try {
                 addRequest(formData);
