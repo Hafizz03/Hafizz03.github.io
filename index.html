@@ -783,7 +783,10 @@
         // Remove condition to always display the admin menu
         const adminMenu = document.getElementById('admin-menu');
         adminMenu.style.display = 'block'; // Make the admin menu visible
-    });
+  // Ensure the admin panel button is visible
+        const adminPanel = document.getElementById('adminPanel');
+        adminPanel.style.display = 'block';
+          });
 </script>
 
 </body>
