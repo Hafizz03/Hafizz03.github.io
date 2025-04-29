@@ -538,13 +538,6 @@
     </div>
 
     <script>
-         document.addEventListener("DOMContentLoaded", function () {
-        const isAdmin = true; // Tukar kepada false jika akses admin tidak dibenarkan
-        const adminMenu = document.getElementById('admin-menu');
-
-        if (isAdmin) {
-            adminMenu.style.display = 'block';
-        }
     // Create animated particles
     function createParticles() {
         const count = 25;
@@ -785,6 +778,11 @@
         tl.to('.welcome-text', { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
           .to('.subtitle', { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.5")
           .to('.request-button', { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.5");
+    });
+          document.addEventListener("DOMContentLoaded", function () {
+        // Remove condition to always display the admin menu
+        const adminMenu = document.getElementById('admin-menu');
+        adminMenu.style.display = 'block'; // Make the admin menu visible
     });
 </script>
 
