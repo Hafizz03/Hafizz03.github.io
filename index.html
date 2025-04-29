@@ -483,6 +483,7 @@
             <li><a href="#" data-scroll="about">About</a></li>
             <li><a href="#" data-scroll="portfolio">Portfolio</a></li>
             <li><a href="#" data-scroll="contact">Contact</a></li>
+             <li id="admin-menu" style="display: none;"><a href="#adminPanel">Admin</a></li>
         </ul>
     </nav>
 
@@ -537,6 +538,13 @@
     </div>
 
     <script>
+         document.addEventListener("DOMContentLoaded", function () {
+        const isAdmin = true; // Tukar kepada false jika akses admin tidak dibenarkan
+        const adminMenu = document.getElementById('admin-menu');
+
+        if (isAdmin) {
+            adminMenu.style.display = 'block';
+        }
     // Create animated particles
     function createParticles() {
         const count = 25;
