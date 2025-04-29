@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Website</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("T-Aep0elLRtwv_keT"); // Your EmailJS Public Key
+       })();
+    </script>
     <style>
         * {
             margin: 0;
@@ -14,13 +20,13 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: #0a192f;
             color: #e6f1ff;
             overflow-x: hidden;
         }
-        
+
         .navbar {
             position: fixed;
             top: 0;
@@ -34,7 +40,7 @@
             z-index: 10;
             box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
         }
-        
+
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
@@ -43,20 +49,20 @@
             cursor: pointer;
             transition: color 0.3s ease;
         }
-        
+
         .logo:hover {
             color: #64ffdaaa;
         }
-        
+
         .menu {
             display: flex;
             list-style: none;
         }
-        
+
         .menu li {
             margin-left: 2rem;
         }
-        
+
         .menu a {
             color: #ccd6f6;
             text-decoration: none;
@@ -65,11 +71,11 @@
             font-size: 0.9rem;
             letter-spacing: 1px;
         }
-        
+
         .menu a:hover {
             color: #64ffda;
         }
-        
+
         .menu a::before {
             content: "";
             position: absolute;
@@ -80,17 +86,17 @@
             background-color: #64ffda;
             transition: width 0.3s ease;
         }
-        
+
         .menu a:hover::before {
             width: 100%;
         }
-        
+
         .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
         }
-        
+
         .hamburger span {
             width: 25px;
             height: 3px;
@@ -98,7 +104,7 @@
             margin: 3px 0;
             transition: all 0.3s ease;
         }
-        
+
         .hero {
             height: 100vh;
             display: flex;
@@ -108,7 +114,7 @@
             text-align: center;
             padding: 0 2rem;
         }
-        
+
         .welcome-text {
             font-size: 4rem;
             font-weight: 700;
@@ -116,14 +122,14 @@
             color: #ccd6f6;
             opacity: 0;
         }
-        
+
         .subtitle {
             font-size: 1.5rem;
             color: #8892b0;
             margin-bottom: 2rem;
             opacity: 0;
         }
-        
+
         .request-button {
             display: inline-block;
             background: transparent;
@@ -137,13 +143,13 @@
             transition: all 0.3s ease;
             opacity: 0;
         }
-        
+
         .request-button:hover {
             background-color: rgba(100, 255, 218, 0.1);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px -10px rgba(100, 255, 218, 0.5);
         }
-        
+
         .modal {
             display: none;
             position: fixed;
@@ -155,7 +161,7 @@
             background-color: rgba(10, 25, 47, 0.8);
             backdrop-filter: blur(5px);
         }
-        
+
         .modal-content {
             background-color: #112240;
             margin: 10% auto;
@@ -169,12 +175,12 @@
             opacity: 0;
             transition: all 0.3s ease;
         }
-        
+
         .modal-show {
             transform: translateY(0);
             opacity: 1;
         }
-        
+
         .close {
             position: absolute;
             right: 1.5rem;
@@ -184,28 +190,28 @@
             cursor: pointer;
             transition: color 0.3s ease;
         }
-        
+
         .close:hover {
             color: #64ffda;
         }
-        
+
         .modal-title {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
             color: #e6f1ff;
         }
-        
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
+
         .form-label {
             display: block;
             margin-bottom: 0.5rem;
             color: #ccd6f6;
             font-size: 0.9rem;
         }
-        
+
         .form-input {
             width: 100%;
             padding: 0.75rem;
@@ -216,18 +222,18 @@
             font-size: 1rem;
             transition: border-color 0.3s ease;
         }
-        
+
         .form-input:focus {
             outline: none;
             border-color: #64ffda;
             box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2);
         }
-        
+
         .form-textarea {
             min-height: 120px;
             resize: vertical;
         }
-        
+
         .submit-button {
             display: inline-block;
             background: transparent;
@@ -239,26 +245,26 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .submit-button:hover {
             background-color: rgba(100, 255, 218, 0.1);
             transform: translateY(-2px);
         }
-        
+
         .success-message {
             display: none;
             text-align: center;
             color: #64ffda;
             margin-top: 1rem;
         }
-        
+
         .error-message {
             display: none;
             text-align: center;
             color: #ff6464;
             margin-top: 1rem;
         }
-        
+
         .loading-spinner {
             display: none;
             width: 20px;
@@ -270,13 +276,13 @@
             margin-left: 10px;
             vertical-align: middle;
         }
-        
+
         @keyframes spin {
             to {
                 transform: rotate(360deg);
             }
         }
-        
+
         .particle {
             position: absolute;
             border-radius: 50%;
@@ -284,7 +290,7 @@
             pointer-events: none;
             z-index: -1;
         }
-        
+
         /* Admin Panel for managing requests */
         .admin-panel {
             display: none;
@@ -297,7 +303,7 @@
             box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
             z-index: 15;
         }
-        
+
         .admin-button {
             display: inline-block;
             background: transparent;
@@ -309,11 +315,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .admin-button:hover {
             background-color: rgba(100, 255, 218, 0.1);
         }
-        
+
         .admin-modal {
             display: none;
             position: fixed;
@@ -325,7 +331,7 @@
             background-color: rgba(10, 25, 47, 0.8);
             backdrop-filter: blur(5px);
         }
-        
+
         .admin-modal-content {
             background-color: #112240;
             margin: 5% auto;
@@ -337,39 +343,39 @@
             max-height: 80vh;
             overflow-y: auto;
         }
-        
+
         .admin-title {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             color: #e6f1ff;
         }
-        
+
         .request-list {
             list-style: none;
         }
-        
+
         .request-item {
             background-color: #1d2d50;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             border-radius: 6px;
         }
-        
+
         .request-info {
             margin-bottom: 0.5rem;
             font-size: 1rem;
         }
-        
+
         .request-info strong {
             color: #ccd6f6;
         }
-        
+
         .request-actions {
             margin-top: 1rem;
             display: flex;
             gap: 1rem;
         }
-        
+
         .approve-btn, .deny-btn {
             padding: 0.5rem 1rem;
             border-radius: 4px;
@@ -377,38 +383,38 @@
             font-size: 0.9rem;
             transition: all 0.3s ease;
         }
-        
+
         .approve-btn {
             background-color: transparent;
             color: #64ffda;
             border: 1px solid #64ffda;
         }
-        
+
         .approve-btn:hover {
             background-color: rgba(100, 255, 218, 0.1);
         }
-        
+
         .deny-btn {
             background-color: transparent;
             color: #ff6464;
             border: 1px solid #ff6464;
         }
-        
+
         .deny-btn:hover {
             background-color: rgba(255, 100, 100, 0.1);
         }
-        
+
         .no-requests {
             color: #8892b0;
             text-align: center;
             padding: 1.5rem;
         }
-        
+
         @media screen and (max-width: 768px) {
             .navbar {
                 padding: 1rem;
             }
-            
+
             .menu {
                 position: fixed;
                 right: 0;
@@ -423,40 +429,40 @@
                 transition: transform 0.3s ease;
                 box-shadow: -10px 0 30px -15px rgba(2, 12, 27, 0.7);
             }
-            
+
             .menu.active {
                 transform: translateX(0);
             }
-            
+
             .menu li {
                 margin: 1.5rem 0;
             }
-            
+
             .hamburger {
                 display: flex;
                 z-index: 20;
             }
-            
+
             .hamburger.active span:first-child {
                 transform: rotate(45deg) translate(5px, 5px);
             }
-            
+
             .hamburger.active span:nth-child(2) {
                 opacity: 0;
             }
-            
+
             .hamburger.active span:last-child {
                 transform: rotate(-45deg) translate(5px, -5px);
             }
-            
+
             .welcome-text {
                 font-size: 2.5rem;
             }
-            
+
             .subtitle {
                 font-size: 1.2rem;
             }
-            
+
             .admin-panel {
                 right: 1rem;
                 bottom: 1rem;
@@ -479,13 +485,13 @@
             <li><a href="#" data-scroll="contact">Contact</a></li>
         </ul>
     </nav>
-    
+
     <section class="hero" id="home">
         <h1 class="welcome-text">Welcome to My Personal Website</h1>
         <p class="subtitle">To access my profile information, please request access below</p>
         <button class="request-button" id="requestAccess">Request Access</button>
     </section>
-    
+
     <div class="modal" id="accessModal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -497,13 +503,12 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="email">Your Email</label>
-                    <input type="email" id="email" class="form-input" required>
+                                      <input type="email" id="email" class="form-input" required>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="reason">Reason for Access</label>
                     <textarea id="reason" class="form-input form-textarea" required></textarea>
                 </div>
-                 <div class="g-recaptcha" data-sitekey="6Le94CcrAAAAAECQpbfaiAhpXHHUC4I6POWIS4g7"></div>
                 <button type="submit" class="submit-button">
                     Submit Request
                     <span class="loading-spinner" id="spinner"></span>
@@ -532,350 +537,248 @@
     </div>
 
     <script>
-        function sendToGoogleSheet(formData) {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxTac6J5f3W3k9ouW_5WYX3czgFULBklm77WY2P_lYBJRxtTuo9pEWXKQWR4DqRDqjP/exec';
+    // Create animated particles
+    function createParticles() {
+        const count = 25;
+        for (let i = 0; i < count; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
 
-    fetch(scriptURL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-    })
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then((data) => {
-        console.log('Successfully saved to Google Sheets:', data);
-    })
-    .catch((error) => {
-        console.error('Error saving to Google Sheets:', error);
-    });
-}
+            const size = Math.random() * 10 + 5;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
 
-        // Create animated particles
-        function createParticles() {
-            const count = 25;
-            for (let i = 0; i < count; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random size between 5 and 15 pixels
-                const size = Math.random() * 10 + 5;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Set initial position
-                const xPos = Math.random() * window.innerWidth;
-                const yPos = Math.random() * window.innerHeight;
-                particle.style.left = `${xPos}px`;
-                particle.style.top = `${yPos}px`;
-                
-                // Set random opacity
-                particle.style.opacity = Math.random() * 0.5 + 0.1;
-                
-                document.body.appendChild(particle);
-                
-                // Animate with GSAP
-                gsap.to(particle, {
-                    x: Math.random() * 200 - 100,
-                    y: Math.random() * 200 - 100,
-                    duration: Math.random() * 5 + 5,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "sine.inOut"
-                });
-            }
-        }
+            const xPos = Math.random() * window.innerWidth;
+            const yPos = Math.random() * window.innerHeight;
+            particle.style.left = `${xPos}px`;
+            particle.style.top = `${yPos}px`;
 
-        // Local Storage Functions
-        const STORAGE_KEY = 'accessRequests';
-        const ADMIN_PASSWORD = 'admin123'; // Simple password for demonstration
-        
-        // Function to get requests from local storage
-        function getStoredRequests() {
-            const storedRequests = localStorage.getItem(STORAGE_KEY);
-            return storedRequests ? JSON.parse(storedRequests) : [];
+            particle.style.opacity = Math.random() * 0.5 + 0.1;
+            document.body.appendChild(particle);
+
+            gsap.to(particle, {
+                x: Math.random() * 200 - 100,
+                y: Math.random() * 200 - 100,
+                duration: Math.random() * 5 + 5,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
         }
-        
-        // Function to save requests to local storage
-        function saveRequests(requests) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(requests));
-        }
-        
-        // Function to add a new request
-        function addRequest(request) {
-            const requests = getStoredRequests();
-            request.id = Date.now().toString();
-            request.status = 'pending';
-            request.date = new Date().toISOString();
-            requests.push(request);
-            saveRequests(requests);
-            return request;
-        }
-        
-        // Function to update request status
-        function updateRequestStatus(id, status) {
-            const requests = getStoredRequests();
-            const index = requests.findIndex(req => req.id === id);
-            if (index !== -1) {
-                requests[index].status = status;
-                requests[index].updatedAt = new Date().toISOString();
-                saveRequests(requests);
-                return true;
-            }
-            return false;
-        }
-        
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const menu = document.querySelector('.menu');
-        
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            menu.classList.toggle('active');
-        });
-        
-        // Modal functionality
-        const modal = document.getElementById('accessModal');
-        const requestBtn = document.getElementById('requestAccess');
-        const closeBtn = document.querySelector('.close');
-        const modalContent = document.querySelector('.modal-content');
-        const form = document.getElementById('accessForm');
-        const successMessage = document.getElementById('successMessage');
-        const errorMessage = document.getElementById('errorMessage');
-        const spinner = document.getElementById('spinner');
-        
-        requestBtn.addEventListener('click', () => {
-            // Reset form and messages
-            form.reset();
-            form.style.display = 'block';
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
-            
-            // Show modal
-            modal.style.display = 'block';
-            setTimeout(() => {
-                modalContent.classList.add('modal-show');
-            }, 10);
-        });
-        
-        closeBtn.addEventListener('click', () => {
-            modalContent.classList.remove('modal-show');
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 300);
-        });
-        
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modalContent.classList.remove('modal-show');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300);
-            }
-        });
-        
-       form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevent default form submission
-    spinner.style.display = 'inline-block'; // Show loading spinner
-           // Get the reCAPTCHA token
-    const recaptchaResponse = grecaptcha.getResponse();
-    if (!recaptchaResponse) {
-        spinner.style.display = 'none';
-        errorMessage.style.display = 'block';
-        errorMessage.textContent = 'Please complete the reCAPTCHA.';
-        return;
     }
-           
-emailjs.init('T-Aep0elLRtwv_keT'); // Replace 'YOUR_USER_ID' with your EmailJS user ID
-    // Get form data
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        reason: document.getElementById('reason').value,
-        recaptchaToken: recaptchaResponse,
-    };
-            // Send form data to your backend
-    fetch('https://script.google.com/macros/s/AKfycbxb0RFcLm2yOtfkXGe0b98MjJtiMw4709ei5Zw9t9b1-GXbBhh1yWx9A_-FeB-sVOsaEA/exec', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            if (data.success) {
-                spinner.style.display = 'none';
-                successMessage.style.display = 'block';
-            } else {
-                throw new Error(data.message || 'Verification failed');
 
-    // Send form data using EmailJS
-    emailjs.send('service_61e7vz9', 'service_61e7vz9', formData)
-        .then(() => {
-            spinner.style.display = 'none';
-            form.style.display = 'none';
-            successMessage.style.display = 'block';
-        })
-        .catch((error) => {
-            spinner.style.display = 'none';
-            errorMessage.style.display = 'block';
-            console.error('EmailJS Error:', error);
-           
-        });
-            sendToGoogleSheet(formData); // Save the request in Google Sheets
-});
-            // Save request to local storage
-            try {
-                addRequest(formData);
-                
-                // Show success message after a short delay
-                setTimeout(() => {
-                    spinner.style.display = 'none';
-                    form.style.display = 'none';
-                    successMessage.style.display = 'block';
-                    
-                    // Refresh admin panel if open
-                    if (document.getElementById('adminModal').style.display === 'block') {
-                        renderRequestList();
-                    }
-                }, 1500);
-            } catch (error) {
-                // Show error message
-                setTimeout(() => {
-                    spinner.style.display = 'none';
-                    errorMessage.style.display = 'block';
-                    console.error('Error saving request:', error);
-                }, 1500);
-            }
-        });
-        
-        // Admin Panel Functionality
-        const adminPanel = document.getElementById('adminPanel');
-        const adminButton = document.getElementById('adminButton');
-        const adminModal = document.getElementById('adminModal');
-        const adminClose = document.getElementById('adminClose');
-        const requestList = document.getElementById('requestList');
-        const noRequests = document.getElementById('noRequests');
-        
-        // Secret admin panel toggle (Ctrl+Shift+A)
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.shiftKey && e.key === 'A') {
-                adminPanel.style.display = adminPanel.style.display === 'block' ? 'none' : 'block';
-            }
-        });
-        
-        adminButton.addEventListener('click', () => {
-            // Prompt for admin password
-            const password = prompt('Enter admin password:');
-            if (password === ADMIN_PASSWORD) {
-                renderRequestList();
-                adminModal.style.display = 'block';
-            } else {
-                alert('Incorrect password');
-            }
-        });
-        
-        adminClose.addEventListener('click', () => {
-            adminModal.style.display = 'none';
-        });
-        
-        window.addEventListener('click', (e) => {
-            if (e.target === adminModal) {
-                adminModal.style.display = 'none';
-            }
-        });
-        
-        // Function to render the request list
-        function renderRequestList() {
-            const requests = getStoredRequests();
-            
-            // Clear the list
-            while (requestList.firstChild) {
-                requestList.removeChild(requestList.firstChild);
-            }
-            
-            // Show "no requests" message if needed
-            if (requests.length === 0) {
-                requestList.appendChild(noRequests);
-                return;
-            }
-            
-            // Hide "no requests" message
-            noRequests.style.display = 'none';
-            
-            // Add request items
-            requests
-                .filter(req => req.status === 'pending')
-                .sort((a, b) => new Date(b.date) - new Date(a.date))
-                .forEach(request => {
-                    const requestItem = document.createElement('li');
-                    requestItem.classList.add('request-item');
-                    requestItem.innerHTML = `
-                        <p class="request-info"><strong>Name:</strong> ${request.name}</p>
-                        <p class="request-info"><strong>Email:</strong> ${request.email}</p>
-                        <p class="request-info"><strong>Date:</strong> ${new Date(request.date).toLocaleString()}</p>
-                        <p class="request-info"><strong>Reason:</strong> ${request.reason}</p>
-                        <div class="request-actions">
-                            <button class="approve-btn" data-id="${request.id}">Approve</button>
-                            <button class="deny-btn" data-id="${request.id}">Deny</button>
-                        </div>
-                    `;
-                    requestList.appendChild(requestItem);
-                });
-            
-            // Add event listeners for approve/deny buttons
-            document.querySelectorAll('.approve-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const id = btn.getAttribute('data-id');
-                    updateRequestStatus(id, 'approved');
-                    // Email would be sent here in a real application
-                    alert(`Request approved. An email will be sent to the user.`);
-                    renderRequestList();
-                });
-            });
-            
-            document.querySelectorAll('.deny-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const id = btn.getAttribute('data-id');
-                    updateRequestStatus(id, 'denied');
-                    // Email would be sent here in a real application
-                    alert(`Request denied. An email will be sent to the user.`);
-                    renderRequestList();
-                });
-            });
+    const STORAGE_KEY = 'accessRequests';
+    const ADMIN_PASSWORD = 'admin123';
+
+    function getStoredRequests() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        return stored ? JSON.parse(stored) : [];
+    }
+
+    function saveRequests(requests) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(requests));
+    }
+
+    function addRequest(request) {
+        const requests = getStoredRequests();
+        request.id = Date.now().toString();
+        request.status = 'pending';
+        request.date = new Date().toISOString();
+        requests.push(request);
+        saveRequests(requests);
+        return request;
+    }
+
+    function updateRequestStatus(id, status) {
+        const requests = getStoredRequests();
+        const index = requests.findIndex(r => r.id === id);
+        if (index !== -1) {
+            requests[index].status = status;
+            requests[index].updatedAt = new Date().toISOString();
+            saveRequests(requests);
+            return true;
         }
-        
-        // Entrance animations
-        window.addEventListener('DOMContentLoaded', () => {
-            createParticles();
-            
-            const tl = gsap.timeline();
-            
-            tl.to('.welcome-text', {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out"
-            })
-            .to('.subtitle', {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out"
-            }, "-=0.5")
-            .to('.request-button', {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out"
-            }, "-=0.5");
+        return false;
+    }
+
+    const hamburger = document.querySelector('.hamburger');
+    const menu = document.querySelector('.menu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        menu.classList.toggle('active');
+    });
+
+    const modal = document.getElementById('accessModal');
+    const requestBtn = document.getElementById('requestAccess');
+    const closeBtn = document.querySelector('.close');
+    const modalContent = document.querySelector('.modal-content');
+    const form = document.getElementById('accessForm');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const spinner = document.getElementById('spinner');
+
+    requestBtn.addEventListener('click', () => {
+        form.reset();
+        form.style.display = 'block';
+        successMessage.style.display = 'none';
+        errorMessage.style.display = 'none';
+        modal.style.display = 'block';
+        setTimeout(() => modalContent.classList.add('modal-show'), 10);
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modalContent.classList.remove('modal-show');
+        setTimeout(() => modal.style.display = 'none', 300);
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modalContent.classList.remove('modal-show');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+    });
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        spinner.style.display = 'inline-block';
+
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            reason: document.getElementById('reason').value
+        };
+
+        try {
+            addRequest(formData);
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                if (document.getElementById('adminModal').style.display === 'block') {
+                    renderRequestList();
+                }
+            }, 1500);
+        } catch (err) {
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                errorMessage.style.display = 'block';
+                console.error('Error saving request:', err);
+            }, 1500);
+        }
+    });
+
+    const adminPanel = document.getElementById('adminPanel');
+    const adminButton = document.getElementById('adminButton');
+    const adminModal = document.getElementById('adminModal');
+    const adminClose = document.getElementById('adminClose');
+    const requestList = document.getElementById('requestList');
+    const noRequests = document.getElementById('noRequests');
+
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+            adminPanel.style.display = adminPanel.style.display === 'block' ? 'none' : 'block';
+        }
+    });
+
+    adminButton.addEventListener('click', () => {
+        const password = prompt('Enter admin password:');
+        if (password === ADMIN_PASSWORD) {
+            renderRequestList();
+            adminModal.style.display = 'block';
+        } else {
+            alert('Incorrect password');
+        }
+    });
+
+    adminClose.addEventListener('click', () => {
+        adminModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === adminModal) {
+            adminModal.style.display = 'none';
+        }
+    });
+
+    const SERVICE_ID = 'service_mtdsv9q';
+    const TEMPLATE_ID = 'template_ut58uql';
+
+    // Function to send email using EmailJS
+    function sendEmail(templateId, params) {
+        emailjs.send(SERVICE_ID, templateId, params)
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('Email sent successfully!');
+            }, (error) => {
+                console.error('FAILED...', error);
+                alert('Failed to send email.');
+            });
+    }
+
+    function renderRequestList() {
+        const requests = getStoredRequests();
+        requestList.innerHTML = '';
+
+        if (requests.length === 0) {
+            requestList.appendChild(noRequests);
+            return;
+        }
+
+        noRequests.style.display = 'none';
+
+        requests
+            .filter(req => req.status === 'pending')
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .forEach(request => {
+                const requestItem = document.createElement('li');
+                requestItem.classList.add('request-item');
+                requestItem.innerHTML = `
+                    <p class="request-info"><strong>Name:</strong> ${request.name}</p>
+                    <p class="request-info"><strong>Email:</strong> ${request.email}</p>
+                    <p class="request-info"><strong>Date:</strong> ${new Date(request.date).toLocaleString()}</p>
+                    <p class="request-info"><strong>Reason:</strong> ${request.reason}</p>
+                    <div class="request-actions">
+                        <button class="approve-btn" data-id="${request.id}" data-email="${request.email}" data-name="${request.name}" data-reason="${request.reason}">Approve</button>
+                        <button class="deny-btn" data-id="${request.id}" data-email="${request.email}" data-name="${request.name}" data-reason="${request.reason}">Deny</button>
+                    </div>
+                `;
+                requestList.appendChild(requestItem);
+            });
+
+        document.querySelectorAll('.approve-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.dataset.id;
+                const email = btn.dataset.email;
+                const name = btn.dataset.name;
+                const reason = btn.dataset.reason;
+                updateRequestStatus(id, 'approved');
+                sendEmail(TEMPLATE_ID, { to_email: email, name, reason, status: 'approved' });
+                renderRequestList();
+            });
         });
-    </script>
+
+        document.querySelectorAll('.deny-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.dataset.id;
+                const email = btn.dataset.email;
+                const name = btn.dataset.name;
+                const reason = btn.dataset.reason;
+                updateRequestStatus(id, 'denied');
+                sendEmail(TEMPLATE_ID, { to_email: email, name, reason, status: 'denied' });
+                renderRequestList();
+            });
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        emailjs.init("T-Aep0elLRtwv_keT"); // EmailJS init
+        createParticles();
+        const tl = gsap.timeline();
+        tl.to('.welcome-text', { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
+          .to('.subtitle', { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.5")
+          .to('.request-button', { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.5");
+    });
+</script>
+
 </body>
 </html>
