@@ -14,10 +14,7 @@
        })();
     </script>
     <style>
-        <section id="content">
-    <h2>Welcome to the Content Section</h2>
-    <p>This is the exclusive content available after your request.</p>
-</section>
+    
         * {
             margin: 0;
             padding: 0;
@@ -791,26 +788,7 @@
         const adminPanel = document.getElementById('adminPanel');
         adminPanel.style.display = 'block';
           });
-        <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const requestButton = document.getElementById('requestAccess');
-        const contentMenu = document.createElement('li'); // Buat elemen menu baru
-        const menuList = document.querySelector('.menu'); // Pilih elemen menu
-
-        // Tambahkan menu untuk konten (disembunyikan terlebih dahulu)
-        contentMenu.id = 'content-menu';
-        contentMenu.style.display = 'none'; // Awalnya tersembunyi
-        contentMenu.innerHTML = '<a href="#content">Content</a>';
-        menuList.appendChild(contentMenu);
-
-        // Tampilkan menu setelah permintaan berhasil
-        requestButton.addEventListener('click', function () {
-            setTimeout(() => {
-                // Simulasi permintaan disetujui
-                contentMenu.style.display = 'block';
-            }, 2000); // Simulasi waktu loading
-        });
-    });
+    
 </script>
 </script>
 
