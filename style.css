@@ -102,3 +102,105 @@ body {
         font-size: 1.8rem;
     }
 }
+/* Hero Section Background */
+.hero {
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: white;
+    padding: 100px 0;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Button Styles */
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    background: #ff6b6b;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: #ff4757;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: #2c5364;
+}
+
+/* Typing Text Style */
+.typing-text {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-style: italic;
+    color: #ffd56b;
+}
+
+/* Mobile Nav Toggle */
+.mobile-menu {
+    cursor: pointer;
+    display: none;
+}
+
+.mobile-menu div {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Responsive Nav */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #2c5364;
+        position: absolute;
+        right: 0;
+        top: 60px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .mobile-menu.toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .mobile-menu.toggle .line2 {
+        opacity: 0;
+    }
+
+    .mobile-menu.toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+
+/* Lottie container enhancement */
+.maintenance-animation {
+    animation: float 2s ease-in-out infinite;
+}
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
