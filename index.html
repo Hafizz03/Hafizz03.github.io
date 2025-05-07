@@ -3,67 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Nor Hafiz Bin Ramli | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <title>Jualan Gempak - Barangan Peribadi Style</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+.carousel-images img {
+    flex-shrink: 0;
+    width: 100%;
+}
+.carousel-prev, .carousel-next {
+    display: none;
+}
+.carousel:hover .carousel-prev, .carousel:hover .carousel-next {
+    display: block;
+}
+    </style>
 </head>
-<body>
-    <div id="particles-js"></div> <!-- Particle background -->
-
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">HAFIZ<span>Z</span></div>
-                <ul class="nav-links">
-                    <li><a href="#home">Utama</a></li>
-                    <li><a href="#about">Tentang</a></li>
-                    <li><a href="#experience">Pengalaman</a></li>
-                    <li><a href="#education">Pendidikan</a></li>
-                    <li><a href="#contact">Hubungi</a></li>
-                </ul>
-                <div class="mobile-menu">
-                    <div class="line1"></div>
-                    <div class="line2"></div>
-                    <div class="line3"></div>
-                </div>
-            </nav>
+<body class="bg-gray-100 font-sans">
+    <!-- Navbar -->
+    <nav class="bg-indigo-600 text-white p-4 sticky top-0 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">iRULthrift</h1>
+            <div class="space-x-4">
+                <a href="#home" class="hover:text-yellow-300">Utama</a>
+                <a href="#products" class="hover:text-yellow-300">Produk</a>
+                <a href="#contact" class="hover:text-yellow-300">Hubungi</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Salam, Saya <span>Muhammad Nor Hafiz</span></h1>
-                <p>Seorang graduan baharu dalam bidang Teknologi Komputer (Sistem) dengan pengalaman dalam penyelesaian masalah komputer, infrastruktur rangkaian, dan penyelenggaraan sistem.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn" onclick="showContactForm()">Hubungi Saya</a>
-                    <a href="#about" class="btn btn-outline">Ketahui Lebih Lanjut</a>
-                    <a href="CV_Muhammad_Nor_Hafiz.pdf" class="btn btn-cv" download>Download CV</a>
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20 text-center">
+        <div class="container mx-auto fade-in">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Barangan Peribadi Yang Style & Gempak!</h2>
+            <p class="text-lg mb-6">Dapatkan koleksi eksklusif yang penuh gaya dan sesuai untuk anda yang berani tampil beda.</p>
+            <a href="#products" class="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500">Lihat Produk</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+   <section id="products" class="py-16">
+    <div class="container mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12 fade-in">Koleksi Gempak Kami</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Product Card 1 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 fade-in product-card" 
+                 data-name="SVG KNITWEAR 7th Anniversary" 
+                 data-price="RM 570.00" 
+                 data-description="Jaket kulit pgggggdiperbuat daripada kulit asli berkualiti tinggi. Sesuai untuk gaya harian yang berani dan memberikan keselesaan maksimum. Tahan lasak dan bergaya untuk sebarang musim." 
+                 data-images='["https://via.placeholder.com/300x200/FF0000/FFFFFF?text=Item 1", "https://via.placeholder.com/300x200/00FF00/FFFFFF?text=Jaket2", "https://via.placeholder.com/300x200/0000FF/FFFFFF?text=Jaket3"]'>
+                <div class="relative carousel">
+                    <div class="carousel-images flex">
+                        <img src=""D:\shop\svgknit.jpg"/300x200/FF0000/FFFFFF?text=Jaket1" alt="Jaket 1" class="w-full h-48 object-cover">
+                        <img src="https://via.placeholder.com/300x200/00FF00/FFFFFF?text=Jaket2" alt="Jaket 2" class="w-full h-48 object-cover hidden">
+                        <img src="https://via.placeholder.com/300x200/0000FF/FFFFFF?text=Jaket3" alt="Jaket 3" class="w-full h-48 object-cover hidden">
+                    </div>
+                    <button class="carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100">❮</button>
+                    <button class="carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100">❯</button>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Jaket Kulit Limited</h3>
+                    <p class="text-gray-600 mb-4">Jaket kulit premium, sesuai untuk gaya harian yang berani.</p>
+                    <p class="text-indigo-600 font-bold">RM 250.00</p>
+                    <a href="https://wa.me/+60123456789?text=Saya%20berminat%20dengan%20Jaket%20Kulit%20Limited%20(RM%20250.00).%20Boleh%20berikan%20butiran%20lanjut?" class="mt-4 inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Beli Sekarang</a>
+                </div>
+            </div>
+            <!-- Product Card 2 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 fade-in product-card" 
+                 data-name="Jam Tangan Vintage" 
+                 data-price="RM 180.00" 
+                 data-description="Jam tangan klasik dengan reka bentuk vintaj yang digabungkan dengan teknologi moden. Strap kulit lembut dan muka jam yang elegan, sesuai untuk acara kasual atau formal." 
+                 data-images='["https://via.placeholder.com/300x200/FFFF00/000000?text=Jam1", "https://via.placeholder.com/300x200/FF00FF/FFFFFF?text=Jam2"]'>
+                <div class="relative carousel">
+                    <div class="carousel-images flex">
+                        <img src="https://via.placeholder.com/300x200/FFFF00/000000?text=Jam1" alt="Jam 1" class="w-full h-48 object-cover">
+                        <img src="https://via.placeholder.com/300x200/FF00FF/FFFFFF?text=Jam2" alt="Jam 2" class="w-full h-48 object-cover hidden">
+                    </div>
+                    <button class="carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100">❮</button>
+                    <button class="carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100">❯</button>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Jam Tangan Vintage</h3>
+                    <p class="text-gray-600 mb-4">Jam tangan klasik dengan sentuhan moden, penuh gaya.</p>
+                    <p class="text-indigo-600 font-bold">RM 180.00</p>
+                    <a href="https://wa.me/+60123456789?text=Saya%20berminat%20dengan%20Jam%20Tangan%20Vintage%20(RM%20180.00).%20Boleh%20berikan%20butiran%20lanjut?" class="mt-4 inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Beli Sekarang</a>
+                </div>
+            </div>
+            <!-- Product Card 3 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300 fade-in product-card" 
+                 data-name="Kasut Sneaker Eksklusif" 
+                 data-price="RM 320.00" 
+                 data-description="Sneaker edisi terhad dengan reka bentuk futuristik. Diperbuat daripada bahan ringan dan tapak kusyen untuk keselesaan sepanjang hari. Sesuai untuk gaya jalanan yang menyerlah." 
+                 data-images='["https://via.placeholder.com/300x200/00FFFF/000000?text=Sneaker1", "https://via.placeholder.com/300x200/FFA500/FFFFFF?text=Sneaker2", "https://via.placeholder.com/300x200/800080/FFFFFF?text=Sneaker3"]'>
+                <div class="relative carousel">
+                    <div class="carousel-images flex">
+                        <img src="https://via.placeholder.com/300x200/00FFFF/000000?text=Sneaker1" alt="Sneaker 1" class="w-full h-48 object-cover">
+                        <img src="https://via.placeholder.com/300x200/FFA500/FFFFFF?text=Sneaker2" alt="Sneaker 2" class="w-full h-48 object-cover hidden">
+                        <img src="https://via.placeholder.com/300x200/800080/FFFFFF?text=Sneaker3" alt="Sneaker 3" class="w-full h-48 object-cover hidden">
+                    </div>
+                    <button class="carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100">❮</button>
+                    <button class="carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100">❯</button>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Kasut Sneaker Eksklusif</h3>
+                    <p class="text-gray-600 mb-4">Sneaker limited edition, selesa dan stylish.</p>
+                    <p class="text-indigo-600 font-bold">RM 320.00</p>
+                    <a href="https://wa.me/+60123456789?text=Saya%20berminat%20dengan%20Kasut%20Sneaker%20Eksklusif%20(RM%20320.00).%20Boleh%20berikan%20butiran%20lanjut?" class="mt-4 inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Beli Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-200 py-16">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 fade-in">Hubungi Kami</h2>
+            <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg fade-in">
+                <p class="text-gray-600 mb-6 text-center">Tertarik dengan barangan kami? Hubungi kami atau ikuti kami di media sosial!</p>
+                <div class="text-center">
+                    <p class="text-lg font-semibold mb-2">WhatsApp: <a href="tel:+60123456789" class="text-indigo-600 hover:underline">+6012-3456789</a></p>
+                    <p class="text-lg font-semibold mb-2">Emel: <a href="mailto:jualangempak@example.com" class="text-indigo-600 hover:underline">jualangempak@example.com</a></p>
+                    <p class="text-lg font-semibold">TikTok: <a href="https://www.tiktok.com/@jualangempak" target="_blank" class="text-indigo-600 hover:underline">@jualangempak</a></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Modal Contact Form -->
-    <div id="contactModal" class="contact-modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeContactForm()">&times;</span>
-            <h2>Hubungi Saya</h2>
-            <form action="#" method="post">
-                <label for="name">Nama:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Mesej:</label>
-                <textarea id="message" name="message" required></textarea>
-                <button type="submit" class="btn">Hantar</button>
-            </form>
+    <!-- Modal -->
+   <div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">×</span>
+        <h2 id="modalTitle" class="text-2xl font-bold mb-4"></h2>
+        <div class="relative carousel">
+            <div id="modalCarouselImages" class="carousel-images flex"></div>
+            <button class="carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100">❮</button>
+            <button class="carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100">❯</button>
         </div>
+        <p id="modalDescription" class="text-gray-600 mb-4 mt-4"></p>
+        <p id="modalPrice" class="text-indigo-600 font-bold mb-4"></p>
+        <a id="modalBuyLink" href="#" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Beli Sekarang</a>
     </div>
+</div>
+    <!-- Footer -->
+    <footer class="bg-indigo-600 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>© 2025 Jualan Gempak. Hak cipta terpelihara.</p>
+        </div>
+    </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Smooth scrolling untuk pautan navbar
+       // Smooth scrolling for navbar links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Carousel functionality
+function initializeCarousel(carousel) {
+    const imagesContainer = carousel.querySelector('.carousel-images');
+    const images = imagesContainer.querySelectorAll('img');
+    const prevButton = carousel.querySelector('.carousel-prev');
+    const nextButton = carousel.querySelector('.carousel-next');
+    let currentIndex = 0;
+
+    function showImage(index) {
+        images.forEach(img => img.classList.add('hidden'));
+        images[index].classList.remove('hidden');
+    }
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    });
+
+    showImage(currentIndex);
+}
+
+// Initialize carousels in product cards
+document.querySelectorAll('.product-card .carousel').forEach(carousel => {
+    initializeCarousel(carousel);
+});
+
+// Modal functionality
+const modal = document.getElementById('productModal');
+const closeModal = document.querySelector('.close-modal');
+const modalTitle = document.getElementById('modalTitle');
+const modalCarouselImages = document.getElementById('modalCarouselImages');
+const modalDescription = document.getElementById('modalDescription');
+const modalPrice = document.getElementById('modalPrice');
+const modalBuyLink = document.getElementById('modalBuyLink');
+
+document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', function (e) {
+        // Prevent modal from opening if clicking the "Beli Sekarang" button
+        if (e.target.closest('a')) return;
+
+        const name = this.getAttribute('data-name');
+        const price = this.getAttribute('data-price');
+        const description = this.getAttribute('data-description');
+        const images = JSON.parse(this.getAttribute('data-images'));
+        const buyLink = this.querySelector('a').href;
+
+        modalTitle.textContent = name;
+        modalDescription.textContent = description;
+        modalPrice.textContent = price;
+        modalBuyLink.href = buyLink;
+
+        // Populate modal carousel
+        modalCarouselImages.innerHTML = '';
+        images.forEach((src, index) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = `${name} ${index + 1}`;
+            img.classList.add('w-full', 'h-64', 'object-cover', index === 0 ? '' : 'hidden');
+            modalCarouselImages.appendChild(img);
+        });
+
+        modal.style.display = 'flex';
+
+        // Initialize carousel in modal
+        initializeCarousel(modal.querySelector('.carousel'));
+    });
+});
+
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+    </script>
 </body>
 </html>
